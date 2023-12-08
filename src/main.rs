@@ -1,19 +1,22 @@
-// mod args;
+use std::env::args;
+use clap::Parser;
+use crate::args::PngMeArgs;
+
+mod args;
 // mod chunk;
 mod chunk_type;
-// mod commands;
 mod png;
 mod chunk;
-//
-// pub type Error = Box<dyn std::error::Error>;
-// pub type Result<T> = std::result::Result<T, Error>;
-//
-// fn main() -> Result<()> {
-//     todo!()
-// }
-
-use std::error::Error;
+mod commands;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
-    Ok(())
+    let args = args::Cli::parse();
+    println!("{:?}", args);
+    match args.subcommand {
+        args::PngMeArgs::Encode(encode_args) => commands::encode(encode_args),
+        PngMeArgs::Decode(encode_args) => commands::decode(encode_args),
+        args::PngMeArgs::Remove(remove_args) => commands::remove(remove_args),
+        args::PngMeArgs::Print(print_args) => commands::print(print_args),
+    }
 }
+

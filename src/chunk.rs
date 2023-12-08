@@ -10,6 +10,7 @@ use std::fmt::Display;
 // fn as_bytes(&self) -> Vec<u8>
 // //还要 TryFrom<&[u8]>, Display
 use crate::chunk_type::ChunkType;
+
 #[derive(Debug)]
 pub struct Chunk {
     // 一个 4 字节无符号整数，表示块数据字段中的字节数。长度仅计算数据字段，而不计算其本身、块类型代码或 CRC。
@@ -52,7 +53,7 @@ impl Chunk {
         &self.chunk_type
     }
 
-    pub fn data(&self) -> &Vec<u8> {
+    pub fn data(&self) -> &[u8] {
         &self.data
     }
 
@@ -83,7 +84,7 @@ impl TryFrom<&[u8]> for Chunk {
         }
         let chunk_type_bytes: [u8; 4] = bytes[4..8].try_into().unwrap(); // 4 ~ 7
         let chunk_type = ChunkType::try_from(chunk_type_bytes)?;
-        let data = bytes[8..bytes.len() -4 ].to_vec(); // 8 ~ -4
+        let data = bytes[8..bytes.len() - 4].to_vec(); // 8 ~ -4
         let crc_bytes: [u8; 4] = bytes[bytes.len() - 4..].try_into().unwrap(); // -4 ~ ..
         let crc = u32::from_be_bytes(crc_bytes);
         let chunk = Chunk::new(chunk_type, data);
