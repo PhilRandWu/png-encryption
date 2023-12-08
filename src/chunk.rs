@@ -17,7 +17,7 @@ pub struct Chunk {
     length: u32,
     // 一个 4 字节的块类型代码。为了便于描述和检查 PNG 文件，类型代码仅限于由大写和小写 ASCII 字母（A-Z 和 a-z，或 65-90 和 97-122）组成。
     // 但是，编码器和解码器必须将代码视为固定的二进制值，而不是字符串(也就是要看作一个一个字节)
-    chunk_type: ChunkType,
+    pub(crate) chunk_type: ChunkType,
     // 适合块类型的数据字节。该字段可以是零长度
     data: Vec<u8>,
     // 一个4字节的CRC（Cyclic Redundancy Check）是根据chunk前面的字节计算出来的，

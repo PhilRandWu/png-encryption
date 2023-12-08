@@ -1,3 +1,6 @@
+use std::path::PathBuf;
+use clap::{Args, Parser, Subcommand};
+
 #[derive(Debug, Parser)]
 #[clap(name = "pngEnc")]
 pub struct Cli {
