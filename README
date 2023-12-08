@@ -1,0 +1,24 @@
+# png_encryption
+
+description: Information can be encrypted and stored in image applications, and surprisingly, multiple encryptions can be performed so that an image can carry different encrypted information!
+
+## run commands
+    1.encode `.\target\debug\png_encryption.exe encode ./src/assets/left.png rust "hello" ./src/assets/b.png`
+        params:
+            - file path
+            - chunk_type must long 4 char
+            - encode message
+            - output file path
+    2.decode .\target\debug\png_encryption.exe decode ./src/assets/b.png rust
+        params:
+            - file path
+            - origin chunk_type must long 4 char
+
+    3.remove .\target\debug\png_encryption.exe remove ./src/assets/b.png rust
+        params:
+            - output file path
+            - remove chunk_type
+
+    4.print .\target\debug\png_encryption.exe print ./src/assets/b.png
+        params:
+            - scan file chunk path
