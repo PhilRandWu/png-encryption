@@ -8,3 +8,4 @@ edition = "2021"
 [dependencies]
 crc = "3.0.1"
 clap = { version = "4.2.5", features = ["derive"] }
+slint = "1.3.2"

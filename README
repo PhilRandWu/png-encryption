@@ -22,3 +22,8 @@ description: Information can be encrypted and stored in image applications, and 
     4.print .\target\debug\png_encryption.exe print ./src/assets/b.png
         params:
             - scan file chunk path
+
+ ## TODO
+ feat front_end
+
+$env:SLINT_NO_QT="1";cargo run
