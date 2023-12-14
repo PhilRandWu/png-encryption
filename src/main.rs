@@ -1,13 +1,13 @@
-use std::env::args;
-use clap::Parser;
-use crate::args::PngMeArgs;
-
-mod args;
+// use std::env::args;
+// use clap::Parser;
+// use crate::args::PngMeArgs;
+//
+// mod args;
+// // mod chunk;
+// mod chunk_type;
+// mod png;
 // mod chunk;
-mod chunk_type;
-mod png;
-mod chunk;
-mod commands;
+// mod commands;
 
 // fn main() -> Result<(), Box<dyn std::error::Error>> {
 //     let args = args::Cli::parse();
@@ -48,15 +48,21 @@ mod commands;
 // }
 
 
-fn main() {
-    MainWindow::new().unwrap().run().unwrap();
-}
+// fn main() {
+//     MainWindow::new().unwrap().run().unwrap();
+// }
+//
+// slint::slint! {
+//     export component MainWindow inherits Window {
+//         Text {
+//             text: "hello world";
+//             color: green;
+//         }
+//     }
+// }
 
-slint::slint! {
-    export component MainWindow inherits Window {
-        Text {
-            text: "hello world";
-            color: green;
-        }
-    }
+slint::include_modules!();
+
+fn main() {
+   MainWindow::new().unwrap().run().unwrap();
 }
